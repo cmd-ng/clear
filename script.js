@@ -1,19 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Mobile Menu Toggle
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    const uicoreHamButtons = document.querySelectorAll('.uicore-ham');
+    const mobileMenuWrapper = document.querySelector('.uicore-navigation-wrapper');
+    const mobileMenuLinks = document.querySelectorAll('.uicore-navigation-wrapper .uicore-menu li a');
     
-    if(mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileBtn.querySelector('i');
-            if(navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+    if (mobileMenuWrapper) {
+        uicoreHamButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                mobileMenuWrapper.classList.toggle('active');
+            });
+        });
+
+        // Close mobile menu when an anchor link is clicked
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuWrapper.classList.remove('active');
+            });
         });
     }
 
@@ -36,11 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 // Close mobile menu if open
-                if(navLinks && navLinks.classList.contains('active')){
-                    navLinks.classList.remove('active');
-                    const icon = mobileBtn.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                if (mobileMenuWrapper && mobileMenuWrapper.classList.contains('active')) {
+                    mobileMenuWrapper.classList.remove('active');
                 }
                 
                 const offset = 80;

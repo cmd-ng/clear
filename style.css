@@ -969,3 +969,119 @@
         gap: 0;
     }
 }
+
+/* --- PREMIUM MOBILE RESPONSIVE NAVIGATION OVERLAYS & MICRO-ANIMATIONS --- */
+
+.uicore-navigation-wrapper {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    background: #071524 !important; /* Premium brand matching deep dark blue */
+    z-index: 999999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.uicore-navigation-wrapper.active {
+    transform: translateX(0) !important;
+}
+
+.uicore-navigation-wrapper nav.uicore {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px 30px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    background: transparent !important;
+}
+
+/* Force vertical menu items inside mobile wrapper and clear horizontal elementor styles */
+.uicore-navigation-wrapper .uicore-menu {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 15px !important;
+    padding: 60px 40px !important;
+    display: flex !important;
+    list-style: none !important;
+    margin: 0 !important;
+}
+
+.uicore-navigation-wrapper .uicore-menu li {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.uicore-navigation-wrapper .uicore-menu li a {
+    font-size: 22px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    display: block !important;
+    padding: 15px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    font-family: 'Outfit', sans-serif !important;
+    transition: color 0.3s ease, border-color 0.3s ease !important;
+    text-decoration: none !important;
+    opacity: 0.85 !important;
+}
+
+.uicore-navigation-wrapper .uicore-menu li a:hover,
+.uicore-navigation-wrapper .uicore-menu li.current-menu-item a {
+    color: var(--accent-lime) !important;
+    border-bottom-color: var(--accent-lime) !important;
+    opacity: 1 !important;
+}
+
+/* Hamburg icon and cross animations styling */
+.uicore-toggle.uicore-ham {
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 1000000 !important;
+}
+
+.uicore-toggle.uicore-ham .bars {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    width: 24px !important;
+}
+
+.uicore-toggle.uicore-ham .bar {
+    display: block !important;
+    width: 24px !important;
+    height: 2px !important;
+    background-color: #ffffff !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* When the active drawer is open, transform hamburger into close shape */
+.uicore-navigation-wrapper.active .uicore-mobile-head-right .uicore-toggle.uicore-ham .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg) !important;
+}
+.uicore-navigation-wrapper.active .uicore-mobile-head-right .uicore-toggle.uicore-ham .bar:nth-child(2) {
+    opacity: 0 !important;
+    transform: scale(0) !important;
+}
+.uicore-navigation-wrapper.active .uicore-mobile-head-right .uicore-toggle.uicore-ham .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg) !important;
+}
+
+/* Subsidiary Card Responsiveness & Padding Corrections */
+@media (max-width: 480px) {
+    .subsidiary-tile-card {
+        min-width: 100% !important;
+        padding: 24px 20px !important;
+    }
+}
+
