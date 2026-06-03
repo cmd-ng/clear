@@ -1230,22 +1230,32 @@ body {
     justify-content: center;
 }
 
-/* Live preview iframe inside mock */
-.browser-content iframe {
-    width: 133.33%;
-    height: 240px;
+/* Live preview iframe or static screenshot image inside mock */
+.browser-content iframe,
+.browser-content img.browser-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
     border: none;
-    background: #fff;
-    transform: scale(0.75);
-    transform-origin: top left;
     pointer-events: none;
     opacity: 0.95;
     transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     z-index: 2;
 }
+.browser-content iframe {
+    width: 133.33%;
+    height: 240px;
+    transform: scale(0.75);
+    transform-origin: top left;
+}
 .subsidiary-tile-card:hover .browser-content iframe {
     transform: scale(0.77);
+    opacity: 1;
+}
+.subsidiary-tile-card:hover .browser-content img.browser-preview-img {
+    transform: scale(1.05);
     opacity: 1;
 }
 
